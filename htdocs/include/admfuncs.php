@@ -79,6 +79,7 @@ function genTicketId()
   {
     logError("cannot generate unique ticket ID");
     httpInternalError();
+    unlink($tmpFile);
   }
 
   return array($id, $tmpFile);

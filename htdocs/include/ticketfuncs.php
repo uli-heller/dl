@@ -77,6 +77,7 @@ function handleUpload($FILE, $params)
 
   // generate new unique id/file name
   list($id, $tmpFile) = genTicketId();
+  $tmpFile = preg_replace('/(\/.*\/)/',"\\1$FILE[name]_",$tmpFile);
   if(!move_uploaded_file($FILE["tmp_name"], $tmpFile))
   {
     logError("cannot move file " . $FILE["tmp_name"] . " into $tmpFile");
